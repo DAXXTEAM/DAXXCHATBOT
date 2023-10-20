@@ -42,24 +42,16 @@ EMOJIOS = [
 ]
       
 START = f"""
-**๏ Hie Baby🐒 ๏**
-"""
+๏ ʜᴇʏ, ɪ ᴀᴍ {BOT_NAME}
+➻ ᴀɴ ᴏᴘᴇɴ-ᴀɪ-ʙᴀsᴇᴅ ᴄʜᴀᴛɢᴘᴛ.
+──────────────────
+ɪ ᴀᴍ ᴀᴅᴠᴀɴᴄᴇ ʙᴏᴛ ᴀɴᴅ ᴄᴀɴ 
+ᴀɴsᴡᴇʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀɪᴇs ᴇᴀsʟɪʏ
 
-@bot.on_message(filters.command(["start", "aistart", f"start@{BOT_USERNAME}"]))
-async def restart(client, m: Message):
-    accha = await m.reply_text(
-                text = random.choice(EMOJIOS),
-    )
-    await asyncio.sleep(1)
-    await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠..")
-    await asyncio.sleep(0.1)
-    await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠...")
-    await asyncio.sleep(0.1)
-    await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠....")
-    await asyncio.sleep(0.1)
-    await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐞𝐝.✓")
-    await asyncio.sleep(0.2)
-    await accha.edit("𝐒𝐭𝐚𝐫𝐭")
+Rᴇᴀᴅ Tʜᴇ ʜᴇʟᴘ sᴇᴄᴛɪᴏɴ ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏ
+
+๏ ᴛᴏ ɢᴇᴛ ʜᴇʟᴘ ᴜsᴇ /help
+""" 
        
 @bot.on_message(
     filters.command(["chatbot off", f"chatbot@{BOT_USERNAME} off"], prefixes=["/", ".", "?", "-"])
