@@ -1,5 +1,3 @@
-#####
-
 from pyrogram import Client, filters
 from pyrogram.types import *
 from pymongo import MongoClient
@@ -15,7 +13,7 @@ from datetime import datetime
 API_ID = "25450075"
 API_HASH = "278e22b00d6dd565c837405eda49e6f2"
 BOT_TOKEN = os.environ.get("BOT_TOKEN", None) 
-MONGO_URL = "mongodb+srv://teamdaxx123:teamdaxx123@cluster0.ysbpgcp.mongodb.net/?retryWrites=true&w=majority"
+MONGO_URL = "mongodb+srv://kuldiprathod2003:kuldiprathod2003@cluster0.wxqpikp.mongodb.net/?retryWrites=true&w=majority"
 DATABASE_NAME = os.environ.get("DATABASE_NAME") 
 BOT_USERNAME = os.environ.get("BOT_USERNAME")
 BOT_NAME = os.environ.get("BOT_NAME")
