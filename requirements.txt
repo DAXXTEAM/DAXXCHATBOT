@@ -1,6 +1,0 @@
-pyrogram==2.0.106
-pymongo==4.6.1
-requests
-dnspython== 1.2.5
-tgcrypto==1.2.5
-asyncio
