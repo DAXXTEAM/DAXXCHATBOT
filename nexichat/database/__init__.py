@@ -6,5 +6,5 @@ DAXXdb = MongoClient(config.MONGO_URL)
 DAXX = DAXXdb["DAXXDb"]["DAXX"]
 
 
-from .chats import *
-from .users import *
+from .chatsdb import *
+from .usersdb import *
