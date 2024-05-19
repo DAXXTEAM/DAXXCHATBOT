@@ -11,7 +11,7 @@ from config import *
 from config import OWNER_ID, MONGO_URL
 from pyrogram import *
 from pyrogram.types import *
-from nexichat import nexichat as Nexus
+from nexichat import nexichat
 from nexichat.db import chatsdb
 from nexichat.db import usersdb
 from nexichat.db import *
@@ -37,7 +37,7 @@ async def send_msg(user_id, message):
         return 500, f"{user_id} : {traceback.format_exc()}\n"
 
 
-@Nexus.on_message(filters.command("broadcast") & filters.user(OWNER_ID))
+@nexichat.on_cmd("br") & filters.user(OWNER_ID))
 async def broadcast(_, message):
     if not message.reply_to_message:
         await message.reply_text("ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ʙʀᴏᴀᴅᴄᴀsᴛ ɪᴛ.")
@@ -79,7 +79,7 @@ async def broadcast(_, message):
 
 
 
-@Nexus.on_message(filters.command("announce") & filters.user(OWNER_ID))
+@nexichat.on_cmd("an") & filters.user(OWNER_ID))
 async def announced(_, message):
     if message.reply_to_message:
       to_send=message.reply_to_message.id
