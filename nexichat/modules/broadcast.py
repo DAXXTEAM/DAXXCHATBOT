@@ -3,7 +3,7 @@ from config import OWNER_ID
 from pyrogram import *
 from pyrogram.types import *
 from nexichat import nexichat as Nexus
-from nexichat.db import *
+from nexichat.db import chatsdb, usersdb
 
 
 
