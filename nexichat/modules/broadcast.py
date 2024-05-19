@@ -2,7 +2,7 @@ import asyncio
 from config import OWNER_ID
 from pyrogram import *
 from pyrogram.types import *
-from nexichat import app as Nexus
+from nexichat import nexichat as Nexus
 from nexichat.database import *
 
 
