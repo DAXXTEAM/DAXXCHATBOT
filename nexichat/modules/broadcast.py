@@ -1,10 +1,14 @@
 import asyncio
-from config import OWNER_ID
+from config import *
+
+from config import OWNER_ID, MONGO_URL
 from pyrogram import *
 from pyrogram.types import *
 from nexichat import nexichat as Nexus
 from nexichat.db import chatsdb
 from nexichat.db import usersdb
+from nexichat.db import *
+from nexichat.database import *
 
 
 
