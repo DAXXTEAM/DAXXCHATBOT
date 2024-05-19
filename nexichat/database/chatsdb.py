@@ -1,36 +1,34 @@
-from config import MONGO_URL
-from motor.motor_asyncio import AsyncIOMotorClient as MongoCli
+from nexichat import db
 
-mongo = MongoCli(MONGO_URL)
-db = mongo.chats
-
-db = db.chatsdb
+chatsdb = db.chatsdb
 
 
-async def get_chats():
-  chat_list = []
-  async for chat in db.chats.find({"chat": {"$lt": 0}}):
-    chat_list.append(chat['chat'])
-  return chat_list
+async def get_served_chats() -> list:
+    chats = chatsdb.find({"chat_id": {"$lt": 0}})
+    if not chats:
+        return []
+    chats_list = []
+    for chat in await chats.to_list(length=1000000000):
+        chats_list.append(chat)
+    return chats_list
 
-async def get_chat(chat):
-  chats = await get_chats()
-  if chat in chats:
+
+async def is_served_chat(chat_id: int) -> bool:
+    chat = await chatsdb.find_one({"chat_id": chat_id})
+    if not chat:
+        return False
     return True
-  else:
-    return False
 
-async def add_chat(chat):
-  chats = await get_chats()
-  if chat in chats:
-    return
-  else:
-    await db.chats.insert_one({"chat": chat})
 
-async def del_chat(chat):
-  chats = await get_chats()
-  if not chat in chats:
-    return
-  else:
-    await db.chats.delete_one({"chat": chat})
-      
+async def add_served_chat(chat_id: int):
+    is_served = await is_served_chat(chat_id)
+    if is_served:
+        return
+    return await chatsdb.insert_one({"chat_id": chat_id})
+
+
+async def remove_served_chat(chat_id: int):
+    is_served = await is_served_chat(chat_id)
+    if not is_served:
+        return
+    return await chatsdb.delete_one({"chat_id": chat_id})
