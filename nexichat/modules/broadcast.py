@@ -37,7 +37,7 @@ async def send_msg(user_id, message):
         return 500, f"{user_id} : {traceback.format_exc()}\n"
 
 
-@nexichat.on_cmd("br") & filters.user(OWNER_ID)
+@nexichat.on_cmd("br")
 async def broadcast(_, message):
     if not message.reply_to_message:
         await message.reply_text("ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ʙʀᴏᴀᴅᴄᴀsᴛ ɪᴛ.")
@@ -79,7 +79,7 @@ async def broadcast(_, message):
 
 
 
-@nexichat.on_cmd("an") & filters.user(OWNER_ID)
+@nexichat.on_cmd("an")
 async def announced(_, message):
     if message.reply_to_message:
       to_send=message.reply_to_message.id
