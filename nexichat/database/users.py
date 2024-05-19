@@ -1,24 +1,41 @@
 from nexichat import db
 
-usersdb = db.users
+from config import MONGO_URL
+from motor.motor_asyncio import AsyncIOMotorClient as MongoCli
+
+mongo = MongoCli(MONGO_URL)
+db = mongo.users
+
+db = db.users
 
 
-async def is_served_user(user_id: int) -> bool:
-    user = await usersdb.find_one({"user_id": user_id})
-    if not user:
-        return False
+
+
+async def get_users():
+  user_list = []
+  async for user in db.users.find({"user": {"$gt": 0}}):
+    user_list.append(user['user'])
+  return user_list
+
+
+async def get_user(user):
+  users = await get_users()
+  if user in users:
     return True
+  else:
+    return False
+
+async def add_user(user):
+  users = await get_users()
+  if user in users:
+    return
+  else:
+    await db.users.insert_one({"user": user})
 
 
-async def get_served_users() -> list:
-    users_list = []
-    async for user in usersdb.find({"user_id": {"$gt": 0}}):
-        users_list.append(user)
-    return users_list
-
-
-async def add_served_user(user_id: int):
-    is_served = await is_served_user(user_id)
-    if is_served:
-        return
-    return await usersdb.insert_one({"user_id": user_id})
+async def del_user(user):
+  users = await get_users()
+  if not user in users:
+    return
+  else:
+    await db.users.delete_one({"user": user})
