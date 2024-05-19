@@ -9,8 +9,8 @@ from pyrogram.types import InlineKeyboardMarkup, Message
 
 from config import OWNER_USERNAME
 from nexichat import nexichat
-from nexichat.database.chats import add_served_chat
-from nexichat.database.users import add_served_user
+from nexichat.database.chatsdb import add_served_chat
+from nexichat.database.usersdb import add_served_user
 from nexichat.modules.helpers import PNG_BTN
 
 
