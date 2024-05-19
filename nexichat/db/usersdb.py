@@ -4,7 +4,7 @@ from motor.motor_asyncio import AsyncIOMotorClient as MongoCli
 mongo = MongoCli(MONGO_URL)
 db = mongo.users
 
-db = db.users
+db = db.usersdb
 
 
 
